@@ -1,3 +1,5 @@
+# Create the project
+
 `https://github.com/zjkuang/react-native-builder-bob`
 
 ```
@@ -27,6 +29,37 @@ Run the example app on Android:
 Good luck!
 ```
 
+# Test the new created project
+
+## iOS (starting folder: @zjkuang/react-native-utils)
+
+```
+cd example
+yarn install
+yarn start
+(Start a new Terminal and cd @zjkuang/react-native-utils/example)
+cd ios
+pod install
+cd ..
+yarn ios
+```
+
+## Android (starting folder: @zjkuang/react-native-utils)
+```
+cd example
+yarn install
+yarn start
+(Start a new Terminal and cd @zjkuang/react-native-utils/example)
+cd android
+(Connect a device to the computer)
+adb reverse tcp:8081 tcp:8081
+yarn android
+```
+
+# Push to GitHub repository
+
+## Verification
+
 Before sending a pull request, make sure your code passes TypeScript and ESLint. Run the following to verify:
 
 ```
@@ -39,3 +72,27 @@ To fix formatting errors, run the following:
 ```
 yarn lint --fix
 ```
+
+## Push to GitHub
+
+(Create an empty GitHub public repository "zjkuang-react-native-utils", with no README.md, no .gitignore)
+
+```
+git add .
+git commit -m "feat: first commit"
+git remote add origin git@github.com:zjkuang/zjkuang-react-native-utils.git
+git branch -M main
+git push -u origin main
+```
+
+### Trouble-shooting
+
+(1) `git commit -m "first commit"` failed with info
+```
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+```
+Solution:
+https://www.conventionalcommits.org/en/v1.0.0/
+
+`git commit -m "feat: first commit"`

@@ -96,3 +96,27 @@ Solution:
 https://www.conventionalcommits.org/en/v1.0.0/
 
 `git commit -m "feat: first commit"`
+
+# Publish
+
+```
+yarn typescript
+yarn prepare
+yarn release
+```
+
+## Trouble-shooting
+
+(1) `yarn release` failed with info
+```
+npm ERR! 402 Payment Required - PUT https://registry.npmjs.org/@zjkuang%2freact-native-utils - You must sign up for private packages
+```
+Solution:
+https://stackoverflow.com/a/68086218/7455975
+
+`package.json`
+```
+"publishConfig": {
+  "access": "public"
+}
+```

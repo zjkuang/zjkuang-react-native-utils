@@ -129,3 +129,14 @@ Check `https://github.com/zjkuang/jkrnts` for usage example.
 
 (1) iOS native module couldn't be found. `Error: The package doesn't seem to be linked...`
 Reason: react-native version must be 0.68.2+ to support .mm files in native iOS module(s).
+
+## Tips
+
+(1) You can rename the .mm file to .m file and remove the `#ifdef RCT_NEW_ARCH_ENABLED` hunks, and then to test it you should
+```
+(In root folder zjkuang-react-native-utils)
+yarn
+cd example
+cd ios && pod install && cd ..
+yarn ios
+```

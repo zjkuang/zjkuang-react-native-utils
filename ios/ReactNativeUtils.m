@@ -1,10 +1,7 @@
 #import "ReactNativeUtils.h"
 
-#ifdef RCT_NEW_ARCH_ENABLED
-#import "RNReactNativeUtilsSpec.h"
-#endif
-
 @implementation ReactNativeUtils
+
 RCT_EXPORT_MODULE()
 
 // Example method
@@ -18,14 +15,5 @@ RCT_REMAP_METHOD(multiply,
 
   resolve(result);
 }
-
-// Don't compile this code when we build for the old architecture.
-#ifdef RCT_NEW_ARCH_ENABLED
-- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
-    (const facebook::react::ObjCTurboModule::InitParams &)params
-{
-    return std::make_shared<facebook::react::NativeReactNativeUtilsSpecJSI>(params);
-}
-#endif
 
 @end

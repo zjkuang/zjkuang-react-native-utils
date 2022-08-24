@@ -127,5 +127,5 @@ Check `https://github.com/zjkuang/jkrnts` for usage example.
 
 ## Trouble-shooting
 
-(1) iOS native module couldn't be found.
+(1) iOS native module couldn't be found. `Error: The package doesn't seem to be linked...`
 Reason: react-native version must be 0.68.2+ to support .mm files in native iOS module(s).

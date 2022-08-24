@@ -120,3 +120,12 @@ https://stackoverflow.com/a/68086218/7455975
   "access": "public"
 }
 ```
+
+# Usage
+
+Check `https://github.com/zjkuang/jkrnts` for usage example.
+
+## Trouble-shooting
+
+(1) iOS native module couldn't be found.
+Reason: react-native version must be 0.68.2+ to support .mm files in native iOS module(s).

@@ -140,3 +140,18 @@ cd example
 cd ios && pod install && cd ..
 yarn ios
 ```
+
+# Polish
+
+## index.tsx
+
+Since we dont have any UI components in `./src/index.tsx`, we want to rename it to `./src/index.ts`
+Remember to make corresponding change in `tsconfig.json`, otherwise the renamed `index.ts` couldn't be found by outsiders.
+```
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@zjkuang/react-native-utils": ["./src/index.ts"]
+    },
+```

@@ -15,10 +15,15 @@ RCT_EXPORT_MODULE()
 
 //   resolve(result);
 // }
-
 RCT_EXPORT_METHOD(multiply:(nonnull NSNumber *)a b:(nonnull NSNumber *)b resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
   NSNumber *result = [NSNumber numberWithDouble:([a doubleValue] * [b doubleValue])];
+  resolve(result);
+}
+
+RCT_EXPORT_METHOD(add:(nonnull NSNumber *)a b:(nonnull NSNumber *)b resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+{
+  NSNumber *result = [NSNumber numberWithDouble:([a doubleValue] + [b doubleValue])];
   resolve(result);
 }
 

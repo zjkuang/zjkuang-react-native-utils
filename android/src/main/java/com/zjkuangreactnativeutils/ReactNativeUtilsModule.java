@@ -30,4 +30,9 @@ public class ReactNativeUtilsModule extends ReactContextBaseJavaModule {
         promise.resolve(a * b);
     }
 
+    @ReactMethod
+    public void add(double a, double b, Promise promise) {
+        promise.resolve(a + b);
+    }
+
 }

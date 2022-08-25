@@ -20,3 +20,7 @@ const ReactNativeUtils = NativeModules.ReactNativeUtils
 export function multiply(a: number, b: number): Promise<number> {
   return ReactNativeUtils.multiply(a, b);
 }
+
+export function add(a: number, b: number): Promise<number> {
+  return ReactNativeUtils.add(a, b);
+}

@@ -1,6 +1,6 @@
 {
   "name": "@zjkuang/react-native-utils",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "test",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

@@ -2,12 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@zjkuang/react-native-utils": [
-        "./src/index",
-        "./src/example/index",
-        "./src/example/js/index",
-        "./src/example/native/index"
-      ]
+      "@zjkuang/react-native-utils": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

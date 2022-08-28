@@ -130,6 +130,12 @@ Check `https://github.com/zjkuang/jkrnts` for usage example.
 (1) iOS native module couldn't be found. `Error: The package doesn't seem to be linked...`
 Reason: react-native version must be 0.68.2+ to support .mm files in native iOS module(s).
 
+(2) VSCode error about `@babel/eslint-parser`
+If VSCode reports on your consumer project (the one that uses this package) about `@babel/eslint-parser`, to mute it, install `@babel/eslint-parser` as devDependency:
+```
+yarn add @babel/eslint-parser -D
+```
+
 ## Tips
 
 (1) You can rename the .mm file to .m file and remove the `#ifdef RCT_NEW_ARCH_ENABLED` hunks, and then to test it you should
@@ -146,12 +152,41 @@ yarn ios
 ## index.tsx
 
 Since we dont have any UI components in `./src/index.tsx`, we want to rename it to `./src/index.ts`
-Remember to make corresponding change in `tsconfig.json`, otherwise the renamed `index.ts` couldn't be found by outsiders.
+
+## lib/**/*
+
+The original package put all things into `src/index.tsx` and exports everything from there. But when your package grows, you want to organize things into folders, e.g.
+You have
+ - src/example/js/index.ts
+ - src/example/native/index.ts
+ - src/example/index.ts
+and in `example/index.ts` you have
+```
+export * from './js';
+export * from './native';
+```
+in `src/index.ts` you have
+```
+export * from './example';
+```
+supposing everything organized in the folders would finally be exported by `src/index.ts`. But in you consumer project, when you
+```
+import {multiply} from '@zjkuang/react-native-utils';
+```
+you'll end up with `Module '"@zjkuang/react-native-utils"' has no exported member 'multiply'.`
+
+To fix this, go to package.json of `@zjkuang/react-native-utils`, in `"files": [...]`, change `"lib"` to `"lib/**/*"`,
+but make sure `"lib/**/*"` is before `"!lib/typescript/example"`
+`package.json`
 ```
 {
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@zjkuang/react-native-utils": ["./src/index.ts"]
-    },
+  "files": [
+    ...
+    "lib/**/*",
+    ...
+    "!lib/typescript/example",
+    ...
+  ],
+}
 ```
+
